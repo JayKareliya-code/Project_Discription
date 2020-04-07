@@ -1,0 +1,166 @@
+#define BLYNK_PRINT Serial
+#define DOUT  D5  // D5 is connected to Loadcell Module 
+#define CLK  D6   // D6 is connected to Loadcell Module                                        
+#include<SoftwareSerial.h>
+#include "HX711.h"
+#include <ESP8266WiFi.h>
+#include <BlynkSimpleEsp8266.h>
+#include <Servo.h>
+
+HX711 scale;
+float calibration_factor = -7050;
+Servo myservo;  
+SoftwareSerial s(D2,D3);  // rx tx
+SoftwareSerial s1(D7,D8); // rx2,tx2   
+
+int pos = 0;    
+int b =0; //-7050 worked for my 440lb max scale setup
+char ssid[] = "VVPE";
+char pass[] = "vvpee123";
+char auth[] = "dEm2Rhyzn4-rLAJ0LcNftYadJg1ElVWr";
+void glass();
+void monitoring1();
+void monitoring2();
+void plastic();
+
+void setup()
+{
+
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Blynk.begin(auth, ssid, pass);
+  Serial.println("HX711 calibration sketch");
+  Serial.println("Remove all weight from scale");
+  Serial.println("After readings begin, place known weight on scale");
+  Serial.println("Press + or a to increase calibration factor");
+  Serial.println("Press - or z to decrease calibration factor");
+  scale.begin(DOUT, CLK);
+  scale.set_scale();
+  scale.tare(); //Reset the scale to 0
+  long zero_factor = scale.read_average(); //Get a baseline reading
+  Serial.print("Zero factor: "); //This can be used to remove the need to tare the scale. Useful in permanent scale projects.
+  Serial.println(zero_factor);
+  WidgetLED led1(V4);{
+  led1.off();  
+  Blynk.virtualWrite(V5 , 0);
+  digitalWrite(D4,0);
+  myservo.attach(D9);  // Servo motor is connected to pin D9
+  s.begin(9600);
+  s1.begin(9600);
+  myservo.write(0);  // set zero position
+ 
+  }
+   
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+
+   Blynk.run();
+   
+}
+BLYNK_WRITE(V0) {
+  switch (param.asInt())
+  {
+    case 1: // Item 1
+      Serial.println("  GLASS  ");
+      glass();
+      break;
+    case 2: // Item 2
+      Serial.println(" PLASTIC");
+       plastic();
+      break;
+    default:
+      Serial.println("Unknown item selected");
+  }
+}
+BLYNK_WRITE(V1) {
+  switch (param.asInt())
+  {
+    case 1: // Item 1
+      Serial.println("  250  ");
+      break;
+    case 2: // Item 2
+      Serial.println(" 500 ");
+      
+      break;
+    default:
+      Serial.println("Unknown item selected");
+  }
+}
+
+BLYNK_WRITE(V2) {
+  switch (param.asInt())
+  {
+    case 1: // Item 1
+      Serial.println(" BOARD RESET ");
+       delay(2000);
+       ESP.restart();
+      break;
+  }
+}
+void glass()
+{
+  Serial.println("you select 1");
+  scale.set_scale(calibration_factor); //Adjust to this calibration factor
+  Serial.print("Reading: ");
+  int i=scale.get_units()*9.581;
+       Serial.println(i);
+        while(i>=50)
+ {
+    monitoring1();
+ }
+}
+void plastic()
+{
+  Serial.println("you select 2");
+   scale.set_scale(calibration_factor); //Adjust to this calibration factor
+  Serial.print("Reading: ");
+  int i=scale.get_units()*9.581;
+       Serial.println(i);
+        while(i>=50)
+ {
+    monitoring2();
+ }
+}
+ 
+void  monitoring1()
+{
+  int i=scale.get_units()*9.581;
+  Serial.println(i);
+  Blynk.virtualWrite(V5 , i); 
+      int x=s.read(); 
+      if(x==49)
+      {
+        WidgetLED led1(V4);{
+        led1.on();  
+      }
+     } 
+  if(i<= 15)
+  {
+     Serial.println(" low ");
+     s1.print("1");
+     WidgetLED led1(V4);{
+     led1.on();  
+     } 
+  }
+  if(isnan(t)){
+    return;
+  }
+  if(i<50){ 
+    Blynk.notify(String("Bottle is Empty:")+i);
+  }
+  }
+}
+void  monitoring2()
+{
+  int i=scale.get_units()*9.581;
+  Serial.println(i);
+  Blynk.virtualWrite(V5 , i); 
+  if(i<= 15)
+    { 
+     Serial.println(" low "); 
+      WidgetLED led1(V4);{
+     led1.on();  
+     }
+    }
+}
