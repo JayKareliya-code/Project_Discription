@@ -1,19 +1,14 @@
 #define BLYNK_PRINT Serial
 #define DOUT  D5  // D5 is connected to Loadcell Module 
 #define CLK  D6   // D6 is connected to Loadcell Module                                        
-#include<SoftwareSerial.h>
 #include "HX711.h"
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
-#include <Servo.h>
+
 
 HX711 scale;
 float calibration_factor = -7050;
-Servo myservo;  
-SoftwareSerial s(D2,D3);  // rx tx
-SoftwareSerial s1(D7,D8); // rx2,tx2   
 
-int pos = 0;    
 int b =0; //-7050 worked for my 440lb max scale setup
 char ssid[] = "VVPE";
 char pass[] = "vvpee123";
@@ -42,13 +37,7 @@ void setup()
   Serial.println(zero_factor);
   WidgetLED led1(V4);{
   led1.off();  
-  Blynk.virtualWrite(V5 , 0);
-  digitalWrite(D4,0);
-  myservo.attach(D9);  // Servo motor is connected to pin D9
-  s.begin(9600);
-  s1.begin(9600);
-  myservo.write(0);  // set zero position
- 
+  Blynk.virtualWrite(V5 , 0); 
   }
    
 }
@@ -128,13 +117,6 @@ void  monitoring1()
   int i=scale.get_units()*9.581;
   Serial.println(i);
   Blynk.virtualWrite(V5 , i); 
-      int x=s.read(); 
-      if(x==49)
-      {
-        WidgetLED led1(V4);{
-        led1.on();  
-      }
-     } 
   if(i<= 15)
   {
      Serial.println(" low ");
