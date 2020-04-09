@@ -39,7 +39,11 @@
 
 ![p-1](https://user-images.githubusercontent.com/63282206/78758094-30922f80-799b-11ea-9b03-e073470608b7.PNG)
 
-* As shown in above Fig. that Iv bottle is 
+* First of all the IV bottle is hanged on the load cell. 
+* The load cell is connected to HX711 load cell amplifier which is further connected to microcontroller (nodeMCU esp8266) unit. Now the data of the load cell is sent to the microcontroller which is uploaded to Blynk IoT platform. 
+* On the mobile screen we have level indication along with low level warning notification.
+* The entire system can run on mains as power supply as it inbuilt power module on circuit board and also it has a battery with long backup.
 
 # Data Flow Diagram :-
+
 
