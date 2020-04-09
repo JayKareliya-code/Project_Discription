@@ -7,7 +7,7 @@
 
 * In this situation monitoring the salinity level of many patients at a time becomes a tedious and time-consuming task. Also due to increased load, an empty saline bottle connected to the patient can cause many serious medical problems to the patient’s health. Thus, real-time monitoring of the IV bottle is required to ease the task of the hospital staff and nurses. So, in order to solve this problem, we have strongly proposed a feasible solution that monitors the saline levels and warns the user if the level of fluid in any infusion bottle is low.
 
-* The user of the system can see the data of many infusion sets at a time on a single screen along with a low level warning. Such a real-time monitoring system will be helpful to the hospital staff while dealing with many infusion bottles at a time. This is highly advantageous especially during night times as the staff is less compared to the daytime. Our solution can be used in the hospital, ICU, CCU, NICU, OPD, OT, and all departments of the hospital. Our solution is simple, accurate and can be also manufactured in bulk at a very short time period.
+* The user of the system can see the data of many infusion sets at a time on a single screen along with a low level warning. Such a real-time monitoring system will be helpful to the hospital staff while dealing with many infusion bottles at a time. This is highly advantageous, especially during night times as the staff is less compared to the daytime. Our solution can be used in the hospital, ICU, CCU, NICU, OPD, OT, and all departments of the hospital. Our solution is simple, accurate and can be also manufactured in bulk at a very short time period.
 
 # Software Requirement :-
 
