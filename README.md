@@ -47,3 +47,11 @@
 # Data Flow Diagram :-
 
 
+![d-1](https://user-images.githubusercontent.com/63282206/78861396-46aef700-7a52-11ea-876e-65c6465b0877.PNG)
+
+* First of all Load Sensor is connected with the Load cell Amp. so it is basically a 24-bit ADC converter.
+* Whatever the data coming from the Load Sensor is about 24-bit, so basically Hx7111 Load cell Amp. converts data to 10-bit ADC so that the controller can read it.
+* After that, data fetched from the Load Sensor is directly shown in the Blynk IoT app. this is the real time indication.
+* Now controller check continuously that whether the saline level in IV bottle is low or not.
+* If the level is low, then Warning will be shown along with Pop-up notification in the App even if it is closed And if level is not low then controller check continuously.
+
