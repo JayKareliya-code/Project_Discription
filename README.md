@@ -1,7 +1,7 @@
 # Project Title :- #
 ## "Low Cost IV Monitoring And Warning System" 
 
-# Discription :- #
+# Description :- #
 
 * The major problem faced in these days for every hospital that is fighting towards COVID-19 pandemic is, dealing with the intravenous infusion (IV) bottle. As there is a rise in the cases of COVID-19, the load on hospital and working medical staff has increased.
 
@@ -9,7 +9,7 @@
 
 * The user of the system can see the data of many infusion sets at a time on a single screen along with a low level warning. Such a real-time monitoring system will be helpful to the hospital staff while dealing with many infusion bottles at a time. This is highly advantageous especially during night times as the staff is less compared to the daytime. Our solution can be used in the hospital, ICU, CCU, NICU, OPD, OT, and all departments of the hospital. Our solution is simple, accurate and can be also manufactured in bulk at a very short time period.
 
-# Software Requirment :-
+# Software Requirement :-
 
 * [Arduino IDE](https://www.arduino.cc/en/main/software)
 * [NodeMcu Library](https://www.instructables.com/id/Quick-Start-to-Nodemcu-ESP8266-on-Arduino-IDE/)
@@ -17,7 +17,7 @@
 * [Blynk Library](https://github.com/blynkkk/blynk-library)
 * [Blynksimpleesp8266.h Library](https://github.com/blynkkk/blynk-library/blob/master/src/BlynkSimpleEsp8266.h)
 
-# Hardware Requirment :-
+# Hardware Requirements :-
 
 * [Nodemcu](https://www.amazon.in/Robotbanao-NodeMcu-Development-Board-ESP8266/dp/B07D32X6GN/ref=sr_1_2?dchild=1&keywords=Nodemcu&qid=1586329342&sr=8-2)
 * [Hx711 ADC or Loadcell Amp.](https://www.amazon.in/Robodo-Electronics-SEN13879-Dual-Channel-Precision/dp/B07B8SJTGW/ref=sr_1_3?dchild=1&keywords=Hx711&qid=1586329454&sr=8-3)
@@ -34,7 +34,7 @@
 * [Soldering Core](https://www.amazon.in/Twisted-25-Watt-Soldering-Iron/dp/B07H7RB5Q4/ref=sr_1_9?crid=KBXHOQ60L92M&dchild=1&keywords=soldering+iron+set&qid=1586329699&sprefix=solde%2Caps%2C367&sr=8-9)
 * [wall Hook](https://www.flipkart.com/daluci-strong-adhesive-hook-wall-door-sticky-hanger/p/itmca741139c2a0d?pid=HOKFJAXHPASU9G7W&lid=LSTHOKFJAXHPASU9G7W14NOTX&marketplace=FLIPKART&srno=b_2_52&otracker=browse&fm=organic&iid=c74fbe91-e99c-4f8a-b277-abe8c267347b.HOKFJAXHPASU9G7W.SEARCH&ppt=browse&ppn=browse&ssid=4ok87mxfg00000001586329134841)
 
-# Procces Flow Diagram :-
+# Process Flow Diagram :-
 
 
 ![p-1](https://user-images.githubusercontent.com/63282206/78758094-30922f80-799b-11ea-9b03-e073470608b7.PNG)
