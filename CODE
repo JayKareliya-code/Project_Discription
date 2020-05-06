@@ -24,6 +24,7 @@ void setup()
   // put your setup code here, to run once:
   Serial.begin(9600);
   Blynk.begin(auth, ssid, pass);
+  Reset:
   Serial.println("HX711 calibration sketch");
   Serial.println("Remove all weight from scale");
   Serial.println("After readings begin, place known weight on scale");
@@ -120,7 +121,6 @@ void  monitoring1()
   if(i<= 15)
   {
      Serial.println(" low ");
-     s1.print("1");
      WidgetLED led1(V4);{
      led1.on();  
      } 
@@ -131,7 +131,10 @@ void  monitoring1()
   if(i<50){ 
     Blynk.notify(String("Bottle is Empty:")+i);
   }
+  if(i<=2){
+    goto Reset;
   }
+  
 }
 void  monitoring2()
 {
